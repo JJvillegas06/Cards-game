@@ -1,0 +1,58 @@
+.principal{
+    background-color: #94D8E6;
+    width: 1200px;
+    height: 1000px;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+.cartas{
+    width: 1100px;
+    height: 800px;
+    background-color: aqua;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    
+}
+
+.mazo-pc{
+    background-color:#6E87EB;
+    width: 500px;
+    height: 500px;
+    display: flex;
+
+}
+.mazo-pc img{
+    width: 250px;
+    height: 250px;
+}
+.eleccion-pc{
+    align-self:flex-end ;
+}
+
+.mazo-jugador{
+    background-color:#6E87EB ;
+    width: 500px;
+    height:500px;
+    text-align: end;
+    display: flex;
+    flex-direction: row-reverse;
+
+}
+.mazo-jugador img{
+    width: 250px;
+    height: 250px;
+}
+.eleccion-jugador{
+    align-self:flex-end ;
+}
+.botones button{
+    width: 200px;
+    height: 50px;
+    border-radius:20px;
+    font-size: 20px;
+}
