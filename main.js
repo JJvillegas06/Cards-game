@@ -4,7 +4,8 @@ const btnJugar = document.querySelector('.jugar')
 const eleccionJugador = document.querySelector('.eleccion-jugador')
 const eleccionPc = document.querySelector('.eleccion-pc')
 
-let cartashown = '3P'
+
+
 
 let numeros = "A23456789JQK"
 let pintas = "CPTD"
@@ -24,12 +25,27 @@ console.log(cartas)
 console.log(cartasJugadorAlt)
 console.log(cartasPcAlt)
 
+function juegoAleatorio(){
+    
+    numeroAleatorio1 =  Math.floor(Math.random() * 11)
+    numeroAleatorio2 = Math.floor(Math.random() * 11 )
+    cartashown = cartasJugadorAlt[numeroAleatorio1]
+    cartashown2 = cartasPcAlt[numeroAleatorio2]
+    console.log(cartashown)
+    console.log(cartashown2)
+    
+    agregar()
+    
+}
+
 
 function agregar (){
+    
     eleccionJugador.innerHTML = `<img src="img/${cartashown}.png">`
-    eleccionPc.innerHTML = `<img src="img/${cartashown}.png">`
+    eleccionPc.innerHTML = `<img src="img/${cartashown2}.png">`
     
     console.log(cartasJugador) 
 }
 
-btnJugar.addEventListener('click', agregar)
+btnJugar.addEventListener('click', juegoAleatorio ,)
+
