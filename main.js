@@ -3,6 +3,9 @@ const cartasJugador = document.querySelector('.mazo-jugador')
 const btnJugar = document.querySelector('.jugar')
 const eleccionJugador = document.querySelector('.eleccion-jugador')
 const eleccionPc = document.querySelector('.eleccion-pc')
+const resultado = document.querySelector('.resultado')
+const btnReiniciar = document.querySelector('.reiniciar')
+let divContador = document.querySelector('.contador')
 
 let numeros = "23456789JQKA"
 let pintas = "CPTD"
@@ -23,7 +26,6 @@ for (i = 0; i < 20; i++) {
     cartas.push(carta)
 }
 
-
 let cartasPlayer = cartas.slice(0, 10)
 let cartasMaquina = cartas.slice(10, 20)
 
@@ -32,27 +34,127 @@ console.log(cartasPlayer)
 console.log(cartasMaquina)
 
 function sacarCarta() {
-
+    
     contador3++
     divContador.textContent = contador3
+    console.log(contador3)
+    if(contador3 > 10){
+        alert('click en reiniciar')
+        divContador.textContent = resultadoActual
+    }
+    
     
     cartashown = cartasPlayer.shift()
     cartashown2 = cartasMaquina.shift()
     console.log(cartashown)
     console.log(cartashown2)
-    
+    console.log(cartasPlayer.length)
+    console.log(cartasMaquina.length)
+
+    if (numeros.indexOf(cartashown[0]) == numeros.indexOf(cartashown2[0])) {
+        resultado.innerHTML = "empate"
+        if (pintas.indexOf(cartashown[1]) == pintas.indexOf(cartashown2[1])) {
+            resultado.innerHTML = "empate"
+        } else if (pintas.indexOf(cartashown[1]) > pintas.indexOf(cartashown2[1])) {
+            resultado.innerHTML = "ganaste"
+        } else {
+            resultado.innerHTML = "perdiste"
+
+        }
+    } else if (numeros.indexOf(cartashown[0]) > numeros.indexOf(cartashown2[0])) {
+        resultado.innerHTML = "ganaste"
+    } else {
+        resultado.innerHTML = "perdiste"
+
+    }
+    if(resultado.innerHTML == "empate"){
+        cartasEmpate.push(cartashown)
+        cartasEmpate.push(cartashown2)
+    } else if(resultado.innerHTML == "ganaste"){
+        cartasGanadasPlayer.push(cartashown2)
+        console.log(cartasGanadasPlayer)
+    }else{
+        cartasGanadasPc.push(cartashown)
+        console.log(cartasGanadasPc)
+    }
+
+
+    if(cartasPlayer.length == 0){
+        ganador()
+    }
+
+   
+
     agregar()
     
 }
 
 
-function agregar (){
+
+function ganador(){
+    let  divResultado = document.querySelector('.ganador')
+    if(cartasGanadasPlayer.length == cartasGanadasPc.length){
+        console.log('empate')
+        divContador.innerHTML = 'perdiste'
+        divContador.classList.add('estilo')
+    }else if(cartasGanadasPlayer.length > cartasGanadasPc.length){
+        alert('ganaste')
+        divContador.innerHTML = 'ganaste'
+        divContador.classList.add('estilo')
+    }else{
+        alert('perdiste')
+        divContador.innerHTML = 'perdiste'
+        divContador.classList.add('estilo')
+    }
+
+    resultadoActual = divContador.innerHTML
+   
+
     
-    eleccionJugador.innerHTML = `<img src="img/${cartashown}.png">`
-    eleccionPc.innerHTML = `<img src="img/${cartashown2}.png">`
     
-    console.log(cartasJugador) 
 }
 
-btnJugar.addEventListener('click', juegoAleatorio ,)
+function agregar() {
+    eleccionJugador.innerHTML = `<img src="img/${cartashown}.png">`
+    eleccionPc.innerHTML = `<img src="img/${cartashown2}.png">`
 
+}
+
+
+btnJugar.addEventListener('click', sacarCarta)
+
+btnReiniciar.addEventListener('click',reiniciar)
+    
+    
+function reiniciar() {
+    numeros = "23456789JQKA"
+    pintas = "CPTD"
+    cartas = []
+
+    for (i = 0; i < 20; i++) {
+        numero = numeros[Math.floor(Math.random() * numeros.length)]
+        pinta = pintas[Math.floor(Math.random() * pintas.length)]
+        carta = numero + pinta
+        cartas.push(carta)
+    }
+    cartasPlayer = cartas.slice(0, 10)
+    cartasMaquina = cartas.slice(10, 20)
+
+    cartasGanadasPlayer = []
+    cartasGanadasPc = []
+    cartasEmpate = []
+
+    if(contador3 >= 10){
+        contador3 = 0
+        divContador.textContent = contador3
+        divContador.classList.remove('estilo')
+    }
+   
+    
+    console.log(cartas)
+    console.log(cartasPlayer)
+    console.log(cartasMaquina)
+    console.log('hola')
+
+    
+}

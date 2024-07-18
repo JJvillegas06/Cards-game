@@ -18,6 +18,13 @@
 
     
 }
+.estilo{
+    font-size: 40px;
+    background-color: blue;
+    border: solid 1px white;
+    border-radius: 5px;
+
+}
 
 .mazo-pc{
     background-color:#6E87EB;
