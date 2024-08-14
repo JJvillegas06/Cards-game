@@ -1,3 +1,8 @@
+*{
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
 .principal{
     background-color: #94D8E6;
     width: 1200px;
@@ -14,9 +19,40 @@
     background-color: aqua;
     display: flex;
     justify-content: space-between;
-    align-items: center;
-
+    align-items:end ;
+    flex-wrap: wrap;
     
+}
+
+.cartas-pc{
+    padding: 10px;
+    background-color: antiquewhite;
+    width: 500px;
+    height: 300px;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 2px;
+    align-items: center;
+}
+.cartas-pc img{
+    width:80px;
+    height: 90px;
+}
+.cartas-jugador{
+    padding: 10px;
+    background-color: antiquewhite;
+    width: 500px;
+    height: 300px;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 2px;
+    align-items: center;
+}
+.cartas-jugador img{
+    width:80px;
+    height: 90px;
 }
 .estilo{
     font-size: 40px;

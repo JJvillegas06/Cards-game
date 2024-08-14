@@ -117,7 +117,13 @@ function ganador(){
 function agregar() {
     eleccionJugador.innerHTML = `<img src="img/${cartashown}.png">`
     eleccionPc.innerHTML = `<img src="img/${cartashown2}.png">`
-
+|   const listaCartasPC = document.querySelectorAll('carta-mostrada-pc')
+    const listaCartasJugador = document.querySelectorAll('carta-mostrada-jugador')
+    for(let i = 0; i <10;i ++){
+        if(sacarCarta()){
+            
+        }
+    }
 }
 
 
